@@ -53,14 +53,50 @@ var Main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 _a.sent();
                 app.use(cors_1["default"]());
                 app.use(express_1["default"].json());
-                app.post("/api/analytics/page-visit/", function (req, res) {
-                    visitModel_1.DataModel.create(req.body);
-                    res.status(200);
-                });
-                app.post("/api/analytics/link-clicked/", function (req, res) {
-                    clicksModel_1.ClickedModel.create(req.body);
-                    res.status(200);
-                });
+                app.post("/api/analytics/page-visit/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, visitModel_1.DataModel.create(req.body)];
+                            case 1:
+                                _a.sent();
+                                res.status(200).send("ok");
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                app.post("/api/analytics/link-clicked/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, clicksModel_1.ClickedModel.create(req.body)];
+                            case 1:
+                                _a.sent();
+                                res.status(200).send("ok");
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                app.post("/api/analytics/get/page/visit/data", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+                    var data;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, visitModel_1.DataModel.find({})];
+                            case 1:
+                                data = _a.sent();
+                                return [2 /*return*/, res.status(200).json(data)];
+                        }
+                    });
+                }); });
+                app.post("/api/analytics/get/links/clicked/data", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+                    var data;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, clicksModel_1.ClickedModel.find({})];
+                            case 1:
+                                data = _a.sent();
+                                return [2 /*return*/, res.status(200).json(data)];
+                        }
+                    });
+                }); });
                 app.get("/", function (req, res) {
                     res.status(200).send("It works");
                 });
