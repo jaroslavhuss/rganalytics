@@ -61,6 +61,9 @@ var Main = function () { return __awaiter(void 0, void 0, void 0, function () {
                     clicksModel_1.ClickedModel.create(req.body);
                     res.status(200);
                 });
+                app.get("/", function (req, res) {
+                    res.status(200).send("It works");
+                });
                 app.listen(5001, function () {
                     console.log("Server is listening");
                 });

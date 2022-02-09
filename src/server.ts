@@ -17,6 +17,9 @@ const Main = async () => {
     ClickedModel.create(req.body);
     res.status(200);
   });
+  app.get("/", (req, res) => {
+    res.status(200).send("It works");
+  });
   app.listen(5001, () => {
     console.log("Server is listening");
   });

@@ -1,5 +1,5 @@
 window.onload = async () => {
-  const URL: string = "http://localhost:5001";
+  const URL: string = "https://vpsli4228.a24vps.com/nodejs";
   //intial hit
   pageVisit(URL);
   anyLinkClicked(URL);

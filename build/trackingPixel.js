@@ -38,7 +38,7 @@ var _this = this;
 window.onload = function () { return __awaiter(_this, void 0, void 0, function () {
     var URL;
     return __generator(this, function (_a) {
-        URL = "http://localhost:5001";
+        URL = "https://vpsli4228.a24vps.com/nodejs";
         //intial hit
         pageVisit(URL);
         anyLinkClicked(URL);
