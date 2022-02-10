@@ -42,6 +42,8 @@ window.onload = function () { return __awaiter(_this, void 0, void 0, function (
         //intial hit
         pageVisit(URL);
         anyLinkClicked(URL);
+        cookiePopUpBar();
+        cookieCleaner();
         return [2 /*return*/];
     });
 }); };
@@ -136,4 +138,28 @@ var pageVisit = function (baseurl) { return __awaiter(_this, void 0, void 0, fun
         }
     });
 }); };
+var cookiePopUpBar = function () {
+    var consent = localStorage.getItem("nocookies");
+    if (!consent) {
+        var barHTML = "\n  <div style=\"background: #00cdff;\n  background: #00cdff;\n  color: #5a5a5a;\n  padding: 20px;\n  text-align: center;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100vw;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  align-items: center;\"><p>Tento web pou\u017E\u00EDv\u00E1 jen technick\u00E9/funk\u010Dn\u00ED cookies, aby web mohl spr\u00E1vn\u011B fungovat. Nepou\u017E\u00EDv\u00E1me \u017E\u00E1dn\u00E9 cookies t\u0159et\u00EDch stran, jako jsou cookies slu\u017Eeb Google Analytics, Facebook atp.</p> <span style=\"background: #229dc5;\n  color: white;\n  padding: 20px;\n  cursor: pointer; margin: 0px 10px;\" id=\"confirm-rg-button-local\">Rozum\u00EDm!</span></div>\n  ";
+        var bodyTag = document.getElementsByTagName("body")[0];
+        var div_1 = document.createElement("div");
+        div_1.innerHTML = barHTML;
+        bodyTag.appendChild(div_1);
+        var btn = document.getElementById("confirm-rg-button-local");
+        btn.addEventListener("click", function () {
+            localStorage.setItem("nocookies", "yes");
+            div_1.remove();
+        });
+    }
+};
+var cookieCleaner = function () {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+};
 //# sourceMappingURL=trackingPixel.js.map
