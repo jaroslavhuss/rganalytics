@@ -98,7 +98,7 @@ const cookiePopUpBar = () => {
   color: #5a5a5a;
   padding: 20px;
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
